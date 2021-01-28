@@ -1,0 +1,7 @@
+name = "FeatureEng"
+uuid = "1da23141-447d-474e-a064-8dd6bac2aab2"
+authors = ["a-poor <45295232+a-poor@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
