@@ -2,6 +2,6 @@
 
 _created by Austin Poor_
 
-Feature engineering in Julia
+A library for feature engineering in Julia.
 
 
