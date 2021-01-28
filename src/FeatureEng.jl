@@ -1,8 +1,8 @@
 module FeatureEng
 
-include("NumFeats.jl")
+include("NumericFeats.jl")
 include("DateFeats.jl")
-include("CatFeats.jl")
+include("CategoricalFeats.jl")
 include("TextFeats.jl")
 
 end # module
