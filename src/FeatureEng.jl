@@ -2,7 +2,7 @@ module FeatureEng
 
 export 
 # Numeric -- Binning
-    BinFixedWidth, BinExponential, BinQuantile, fit!, predict
+    BinFixedWidth, BinExponential, BinQuantile, fit!, transform
 # Numeric -- Scaling
 # Numeric -- Transforming
 
