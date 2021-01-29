@@ -1,0 +1,83 @@
+# This is a basic workflow to help you get started with Actions
+
+name: TagBot
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Julia TagBot
+        # You may pin to the exact commit or the version.
+        # uses: JuliaRegistries/TagBot@83d2a237b53f636f86edce478900bc8a38e450d2
+        uses: JuliaRegistries/TagBot@v1.10.0
+        with:
+          # GitHub API token
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Owner/name of the registry repository
+          # registry: # optional, default is JuliaRegistries/General
+          # URL of self-hosted GitHub
+          # github: # optional, default is github.com
+          # API base URL of self-hosted GitHub
+          # github_api: # optional, default is api.github.com
+          # Whether or not to merge release branches
+          # branches: # optional
+          # Whether or not to create a repository dispatch event prior to making releases
+          # dispatch: yes # optional
+          # Number of minutes to wait after creating a repository dispatch event
+          # dispatch_delay: # optional, default is 5
+          # Number of days to look back in time for new releases
+          # lookback: # optional, default is 3
+          # SSH private key for pushing tags
+          # ssh: # optional
+          # Password for the SSH key
+          # ssh_password: # optional
+          # GPG key for signing tags
+          # gpg: # optional
+          # Password for the GPG key
+          # gpg_password: # optional
+          # Changelog template
+          # changelog: |# optional, default is ## {{ package }} {{ version }}
+
+#       {% if previous_release %}
+#       [Diff since {{ previous_release }}]({{ compare_url }})
+#       {% endif %}
+
+#       {% if custom %}
+#       {{ custom }}
+#       {% endif %}
+
+#       {% if issues %}
+#       **Closed issues:**
+#       {% for issue in issues %}
+#       - {{ issue.title }} (#{{ issue.number }})
+#       {% endfor %}
+#       {% endif %}
+
+#       {% if pulls %}
+#       **Merged pull requests:**
+#       {% for pull in pulls %}
+#       - {{ pull.title }} (#{{ pull.number }}) (@{{ pull.author.username }})
+#       {% endfor %}
+#       {% endif %}
+
+          # Labels for issues and pull requests to be ignored (comma-delimited)
+          # changelog_ignore: # optional
