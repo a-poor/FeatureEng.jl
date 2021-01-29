@@ -22,6 +22,3 @@ function encode_hash(column::AbstractArray{Any}, n_cols::Int = 16)
 end
 
 
-# function encode_bin_count(column::AbstractArray)
-# end
-

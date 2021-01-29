@@ -28,23 +28,6 @@ function apply_transform(bin::BinFixedWidth, data::AbstractArray{<:Real})
     ceil.(Int,(data .- bin.data_min) ./ bin.bin_width)
 end
 
-##### BinExponential #####
-
-# @with_kw mutable struct BinExponential
-# end
-
-# function fit_transform!(bin::BinExponential, data::AbstractArray{<:Real})
-    
-#     bin.is_fit = true
-#     bin
-# end
-
-# function apply_transform(bin::BinExponential, data::AbstractArray{<:Real})
-#     if !bin.is_fit
-#         error("`bin` hasn't been fit.")
-#     end
-#     [findlast(q -> n < q, bin.quantiles) for n = data]
-# end
 
 ##### BinQuantile #####
 

@@ -6,7 +6,6 @@ include("numeric/scaling.jl")
 include("numeric/interactions.jl")
 include("datetime.jl")
 include("categorical.jl")
-# include("text/_.jl")
 
 
 export 
@@ -27,8 +26,6 @@ export
 
 # Datetime
     strp_datetimes, extract_datetime_features, extract_day_features, extract_time_features
-
-# Text -- 
 
 
 end # module
