@@ -41,11 +41,11 @@ jobs:
           # Whether or not to merge release branches
           # branches: # optional
           # Whether or not to create a repository dispatch event prior to making releases
-          dispatch: yes # optional
+          # dispatch: yes # optional
           # Number of minutes to wait after creating a repository dispatch event
           # dispatch_delay: # optional, default is 5
           # Number of days to look back in time for new releases
-          lookback: # optional, default is 3
+          # lookback: # optional, default is 3
           # SSH private key for pushing tags
           # ssh: # optional
           # Password for the SSH key
