@@ -1,12 +1,7 @@
-module NumericFeats
 
 import Statistics
 import Base.show
 import Base.@kwdef
-
-#############################
-###        Binning        ###
-#############################
 
 ##### BinFixedWidth #####
 
@@ -84,4 +79,3 @@ function predict(bin::BinQuantile, data::AbstractArray)
 end
 
 
-end # module

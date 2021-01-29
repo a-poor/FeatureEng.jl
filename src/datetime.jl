@@ -1,8 +1,7 @@
-module DateFeats
 
-using CategoricalArrays
 using Dates
 using DataFrames
+using CategoricalArrays
 
 
 function strp_datetimes(datetimes::AbstractArray{AbstractString}, format::Union{AbstractString,DateFormat})
@@ -54,4 +53,3 @@ function get_weekday(datetimes::AbstractArray{Union{Date,DateTime}})
     )
 end
 
-end # module
