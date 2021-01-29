@@ -15,3 +15,10 @@ function encode_dummy(column::AbstractArray{Any})
     df[2:end]
 end
 
+function encode_hash(column::AbstractArray{Any}, n_cols::Int = 16)
+    DataFrame(
+        hcat(digits.(hash.(column).&(2^n_cols-1),base=2,pad=n_cols)...)',
+        ["c$i" for i = 1:n_cols]
+    )
+end
+
