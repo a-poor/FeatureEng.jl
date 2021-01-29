@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Test Julia Package
+
+# Controls when the action will run. 
+on:
+  push:
+  pull_request:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Setup Julia environment
+        # You may pin to the exact commit or the version.
+        # uses: julia-actions/setup-julia@0b9b1d2cd24245f151902702d8e73b3f6b910014
+        uses: julia-actions/setup-julia@v1.6.0
+        with:
+          # The Julia version to download (if necessary) and use. Example: 1.0.4
+          version: 1.5.3 
+          # Architecture of the Julia binaries. Defaults to x64.
+          arch: x64
+          # Display InteractiveUtils.versioninfo() after installing
+          show-versioninfo: true 
+          
+      - name: Run Julia package tests
+        # You may pin to the exact commit or the version.
+        # uses: julia-actions/julia-runtest@8ff46c64862da899d55166fdec94a39ee3249de0
+        uses: julia-actions/julia-runtest@v1.5.1
+        with:
+          # Value passed to the --inline flag. Options: yes | no. Default value: yes.
+          inline: yes
+          # Value determining whether to test with coverage or not. Options: true | false. Default value: true.
+          coverage: true
+          # Value passed to the --depwarn flag. Options: yes | no | error. Default value: yes.
+          depwarn: yes
+          # Value passed to the --project flag. The default value is the repository root: "@."
+          project: "@."
+          # Value inserted in front of the julia command, e.g. for running xvfb-run julia [...]
+          # prefix: # optional, default is 
