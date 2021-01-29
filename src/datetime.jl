@@ -34,7 +34,7 @@ function extract_day_features(datetimes::AbstractArray{Union{Date,DateTime}})
         month=get_month(datetimes),
         dayofmonth=day.(datetimes),
         dayofweek=get_dayofweek(datetimes),
-        isweekend=occursin.(datetimes,("Saturday","Sunday"))
+        isweekend=occursin.(datetimes,("Saturday","Sunday")),
         quarter=quarterofyear.(datetimes)
     )
 end

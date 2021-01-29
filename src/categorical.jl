@@ -1,6 +1,5 @@
 
 using DataFrames
-import Parameters.@with_kw
 
 function encode_onehot(column::AbstractArray{Any})
     DataFrame([

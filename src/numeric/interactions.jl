@@ -1,7 +1,7 @@
 
-import DataFrames
+import DataFrames.DataFrame
 
-function interactions(df::DataFrame, degree::T where T <: Integer = 2)
+function polynomial(df::DataFrame, degree::T where T <: Integer = 2)
     # Check inputs
     if degree < 1
         error("`degree` must be ≥ 1")
@@ -15,9 +15,12 @@ function interactions(df::DataFrame, degree::T where T <: Integer = 2)
         append!(new_cols,next)
         last = next
     end
+    # Only keep unique columns
+    new_cols = Set([sort(cs) for cs = new_cols])
+    new_cols = sort([[cs...] for cs = new_cols])
     # Calculate new columns
     rename_cols = cols -> join(cols,"_")
-    get_cols = col_names -> (df[c] for c = col_names)
+    get_cols = col_names -> (df[!,c] for c = col_names)
     mult_cols = cols -> reduce((l,r) -> l .* r, cols)
     get_mult = col_names -> mult_cols(get_cols(col_names))
     # Return the resulting dataframe
