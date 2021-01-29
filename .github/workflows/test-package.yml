@@ -45,6 +45,6 @@ jobs:
           # Value passed to the --depwarn flag. Options: yes | no | error. Default value: yes.
           depwarn: yes
           # Value passed to the --project flag. The default value is the repository root: "@."
-          project: @.
+          project: "@."
           # Value inserted in front of the julia command, e.g. for running xvfb-run julia [...]
           # prefix: # optional, default is 
