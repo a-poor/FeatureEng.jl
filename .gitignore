@@ -1,2 +1,6 @@
 .vscode
 .devcontainer
+
+docs/build/
+docs/Manifest.toml
+
