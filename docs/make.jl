@@ -22,7 +22,7 @@ deploydocs(
     # deps   = nothing | <Function>,
     # make   = nothing | <Function>,
     devbranch = "main",
-    devurl = "",
+    # devurl = "",
     # versions = ["stable" => "v^", "v#.#", devurl => devurl],
     # versions = ["stable" => "v^", "v#.#"],
     push_preview    = true,
