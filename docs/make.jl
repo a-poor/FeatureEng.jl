@@ -12,15 +12,15 @@ makedocs(
 
 deploydocs(
     root   = dirname(abspath(PROGRAM_FILE)),
-    target = "build",
+    # target = "build",
     repo   = "github.com/a-poor/FeatureEng.jl.git",
     branch = "gh-pages",
     # deps   = nothing | <Function>,
     # make   = nothing | <Function>,
-    devbranch = "dev",
+    devbranch = "main",
     devurl = "dev",
     # versions = ["stable" => "v^", "v#.#", devurl => devurl],
-    versions = ["stable" => "v^", "v#.#"],
+    # versions = ["stable" => "v^", "v#.#"],
     push_preview    = true,
     # repo_previews   = repo,
     # branch_previews = branch,
