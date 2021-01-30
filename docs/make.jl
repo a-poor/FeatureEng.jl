@@ -7,7 +7,7 @@ makedocs(
 )
 
 deploydocs(
-    root   = abspath(PROGRAM_FILE),
+    root   = dirname(abspath(PROGRAM_FILE)),
     target = "build",
     repo   = "github.com/a-poor/FeatureEng.jl.git",
     branch = "gh-pages",
