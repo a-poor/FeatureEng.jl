@@ -9,6 +9,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  schedule:
+    - cron: 0 * * * *
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -55,7 +57,10 @@ jobs:
           # Password for the GPG key
           # gpg_password: # optional
           # Changelog template
-          # changelog: |# optional, default is ## {{ package }} {{ version }}
+          changelog: |
+            {{ package }} {{ version }}
+          
+#|# optional, default is ## {{ package }} {{ version }}
 
 #       {% if previous_release %}
 #       [Diff since {{ previous_release }}]({{ compare_url }})
