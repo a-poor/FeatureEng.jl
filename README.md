@@ -1,6 +1,7 @@
 # FeatureEng.jl
 
 ![Test Julia Package](https://github.com/a-poor/FeatureEng.jl/workflows/Test%20Julia%20Package/badge.svg)
+![Documenter](https://github.com/a-poor/FeatureEng.jl/workflows/Documenter/badge.svg)
 
 _created by Austin Poor_
 
