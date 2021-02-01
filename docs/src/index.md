@@ -16,6 +16,20 @@ julia> Pkg.add("FeatureEng")
 
 ## API Reference
 
+`@doc`
+
+```@doc
+FeatureEng
+```
+
+`@autodoc`
+
 ```@autodoc
+Modules = [FeatureEng]
+```
+
+`@index`
+
+```@index
 Modules = [FeatureEng]
 ```
