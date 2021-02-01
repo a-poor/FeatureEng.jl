@@ -2,7 +2,7 @@
 import DataFrames.DataFrame
 
 
-"""
+"""@doc
     polynomial(df::DataFrame, degree::T = 2) where T <: Integer
 
 Calculate [polynomial](https://en.wikipedia.org/wiki/Polynomial_regression) interaction 

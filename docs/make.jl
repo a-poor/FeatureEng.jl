@@ -9,7 +9,10 @@ makedocs(
     clean=true,
     debug=true,
     pages=[
-        "index.md"
+        "Main" => "index.md",
+        # "Getting Started" => "getting-started.md",
+        # "Pipelines" => "pipelines.md",
+        "API Reference" => "api-reference.md",
     ],
     repo   = "github.com/a-poor/FeatureEng.jl.git",
 )
