@@ -1,7 +1,8 @@
 name: build
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+    tags: ["*"]
   workflow_dispatch:
 jobs:
   test:
