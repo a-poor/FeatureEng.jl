@@ -44,8 +44,8 @@ end
 following the following function:
 
 ```math
-y_i^{(\\lambda)} = \\left\{\\begin{matrix}
-\\frac{y_i^\lambda - 1}{\\lambda} & \\mathrm{if} \\lambda \\neq  0, \\\\ 
+y_i^{(\\lambda)} = \\left\\{\\begin{matrix}
+\\frac{y_i^\\lambda - 1}{\\lambda} & \\mathrm{if} \\lambda \\neq  0, \\\\ 
 \\mathrm{ln} y_i & \\mathrm{if} \\lambda = 0, 
 \\end{matrix}\\right.
 ```

@@ -107,10 +107,10 @@ end
         ))
     end
 
-    @testset "Dummy Encoding"
+    @testset "Dummy Encoding" begin
     end
 
-    @testset "Hash Encoding"
+    @testset "Hash Encoding" begin
         data = [1:100:1000;]
         @test size(encode_hash(data,4)) == (10,4)
         @test encode_hash(data,4) == encode_hash(data,4)
@@ -127,7 +127,7 @@ end
         datetimes = [
             DateTime(2021,1,27,14,03,25),
             DateTime(1999,10,5,1,13,43),
-            DateTime(2008,)
+            missing
         ]
         @test all(a === b for (a,b) = zip(
             strp_datetimes(date_strings), datetimes))

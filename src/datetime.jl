@@ -4,7 +4,7 @@ using DataFrames
 using CategoricalArrays
 
 """
-    strp_datetimes(datetimes::T, format::Union{String,DateFormat} = "y-m-d H:M:S") where T <: AbstractArray{<:Abstract
+    strp_datetimes(datetimes::T, format::Union{String,DateFormat} = "y-m-d H:M:S") where T <: AbstractArray{<:AbstractString}
 
 Convert an array of timestamps and to an array of `DateTime` objects.
 
@@ -126,7 +126,7 @@ Features extracted:
 
 * `year`: Year from `datetime`
 * `month`: Month from `datetime`
-* `dayofmonth`: Day of the month (0-31)
+* `dayofmonth`: Day of the month (1-31)
 * `dayofweek`: Day of the week (ordered)
 * `isweekend`: Is `datetime` a weekend?
 * `quarter`: The quarter from datetimes
