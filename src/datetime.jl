@@ -18,12 +18,7 @@ date_strings = [
     "1999-10-05 01:13:43",
     "abcdefg"
     ];
-
 strp_datetimes(date_strings)
-2-element Array{DateTime,1}:
- 2021-01-27T14:03:25
- 1999-10-05T01:13:43
- missing
 ```
 """
 function strp_datetimes(datetimes::T, format::Union{String,DateFormat} = "y-m-d H:M:S") where T <: AbstractArray{<:AbstractString}
@@ -78,12 +73,7 @@ data = strp_datetimes([
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
-
 extract_datetime_features(data)
-
-extract_date_features(data)
-
-extract_time_features(data)
 ```
 
 See also: [`extract_date_features`](@ref), [`extract_time_features`](@ref)
@@ -114,7 +104,6 @@ data = strp_datetimes([
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
-
 extract_time_features(data)
 ```
 
@@ -150,7 +139,6 @@ data = strp_datetimes([
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
-
 extract_date_features(data)
 ```
 

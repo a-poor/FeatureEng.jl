@@ -12,9 +12,9 @@ with one binary-encoded column per unique value in `column`.
 The basic version of this function makes a column for each unique
 value in `column`.
 
-```julia-repl
-julia> data = [3,1,2,4];
-julia> encode_onehot(data)
+```@repl
+data = [3,1,2,4];
+encode_onehot(data)
 4×4 DataFrame
 │ Row │ 1    │ 2    │ 3    │ 4    │
 │     │ Bool │ Bool │ Bool │ Bool │
@@ -27,31 +27,17 @@ julia> encode_onehot(data)
 
 You can also specify a prefix for each column.
 
-```julia-repl
-julia> encode_onehot(data,prefix="col_")
-4×4 DataFrame
-│ Row │ col_1 │ col_2 │ col_3 │ col_4 │
-│     │ Bool  │ Bool  │ Bool  │ Bool  │
-├─────┼───────┼───────┼───────┼───────┤
-│ 1   │ 0     │ 0     │ 1     │ 0     │
-│ 2   │ 1     │ 0     │ 0     │ 0     │
-│ 3   │ 0     │ 1     │ 0     │ 0     │
-│ 4   │ 0     │ 0     │ 0     │ 1     │
+```@repl
+data = [3,1,2,4];
+encode_onehot(data,prefix="col_")
 ```
 
 Additionally, you can specify the categories to convert to columns, 
 regardless of whether it exists in `column`.
 
-```julia-repl
-julia> encode_onehot(data,[1:6;],"c")
-4×6 DataFrame
-│ Row │ c1   │ c2   │ c3   │ c4   │ c5   │ c6   │
-│     │ Bool │ Bool │ Bool │ Bool │ Bool │ Bool │
-├─────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 1   │ 0    │ 0    │ 1    │ 0    │ 0    │ 0    │
-│ 2   │ 1    │ 0    │ 0    │ 0    │ 0    │ 0    │
-│ 3   │ 0    │ 1    │ 0    │ 0    │ 0    │ 0    │
-│ 4   │ 0    │ 0    │ 0    │ 1    │ 0    │ 0    │
+```@repl
+data = [3,1,2,4];
+encode_onehot(data,[1:6;],"c")
 ```
 
 See also: [`encode_dummy`](@ref), [`encode_hash`](@ref)
@@ -118,8 +104,13 @@ end
 """
     encode_hash(column::T, n_cols::Int = 8, prefix::String = "c") where T <: AbstractArray
 
-Encode categorical features with high cardinality as a `DataFrame` with `n_cols`
-columns. 
+Deterministically encode categorical features with high cardinality as a 
+`DataFrame` with `n_cols` columns. 
+
+```@repl
+data = [1:100;1000;];
+encode_hash([1:1_000:10_000;])
+```
 
 See also: [`encode_onehot`](@ref), [`encode_dummy`](@ref)
 """
