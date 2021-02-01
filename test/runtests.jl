@@ -71,12 +71,114 @@ println("Meep. Morp.")
 end
 
 @testset "Categorical" begin
+    @testset "One-Hot Encoding" begin
+        data = [3,1,2,4]
+        @test encode_onehot(data) == DataFrame(Dict(
+            "1" => [0,1,0,0],
+            "2" => [0,0,1,0],
+            "3" => [1,0,0,0],
+            "4" => [0,0,0,1]
+        ))
+        @test encode_onehot(data,"col_") == DataFrame(Dict(
+            "col_1" => [0,1,0,0],
+            "col_2" => [0,0,1,0],
+            "col_3" => [1,0,0,0],
+            "col_4" => [0,0,0,1]
+        ))
+        @test encode_onehot(data,[1:6;]) == DataFrame(Dict(
+            "1" => [0,1,0,0],
+            "2" => [0,0,1,0],
+            "3" => [1,0,0,0],
+            "4" => [0,0,0,1],
+            "5" => [0,0,0,0],
+            "6" => [0,0,0,0]
+        ))
+        @test encode_onehot(data,[1:6;],"col_") == DataFrame(Dict(
+            "col_1" => [0,1,0,0],
+            "col_2" => [0,0,1,0],
+            "col_3" => [1,0,0,0],
+            "col_4" => [0,0,0,1],
+            "col_5" => [0,0,0,0],
+            "col_6" => [0,0,0,0],
+        ))
+        @test encode_onehot(["dog","cat","dog"]) == DataFrame(Dict(
+            "cat" => [0,1,0],
+            "dog" => [1,0,1]
+        ))
+    end
+
+    @testset "Dummy Encoding"
+    end
+
+    @testset "Hash Encoding"
+        data = [1:100:1000;]
+        @test size(encode_hash(data,4)) == (10,4)
+        @test encode_hash(data,4) == encode_hash(data,4)
+    end
 end
 
 @testset "Datetime" begin
-end
-
-@testset "Text" begin
+    @testset "Parse DateTime Strings" begin
+        date_strings = [
+            "2021-01-27 14:03:25",
+            "1999-10-05 01:13:43",
+            "abcdefg"
+        ]
+        datetimes = [
+            DateTime(2021,1,27,14,03,25),
+            DateTime(1999,10,5,1,13,43),
+            DateTime(2008,)
+        ]
+        @test all(a === b for (a,b) = zip(
+            strp_datetimes(date_strings), datetimes))
+    end
+    @testset "Get Date Features" begin
+        data = [
+            DateTime(2021,1,27,14,3,25),
+            DateTime(1999,10,5,1,13,43),
+            DateTime(2010,6,12,11,0,0)
+        ]
+        @test extract_date_features(data) == DataFrame(
+            year=[2021,1999,2010],
+            month=["January","October","June"],
+            dayofmonth=[27,5,12],
+            dayofweek=["Wednesday","Tuesday","Saturday"],
+            isweekend=[0,0,1],
+            quarter=[1,4,2]
+        )
+    end
+    @testset "Get Time Features" begin
+        data = [
+            DateTime(2021,1,27,14,3,25),
+            DateTime(1999,10,5,1,13,43),
+            DateTime(2010,6,12,11,0,0)
+        ]
+        @test extract_time_features(data) == DataFrame(
+            hour=[14,1,11],
+            minute=[3,13,0],
+            second=[25.,43.,0.],
+            isAM=[0,1,1]
+        )
+    end
+    @testset "Get Date Features" begin
+        data = [
+            DateTime(2021,1,27,14,3,25),
+            DateTime(1999,10,5,1,13,43),
+            DateTime(2010,6,12,11,0,0)
+        ]
+        @test extract_datetime_features(data) == DataFrame(
+            year=[2021,1999,2010],
+            month=["January","October","June"],
+            dayofmonth=[27,5,12],
+            dayofweek=["Wednesday","Tuesday","Saturday"],
+            isweekend=[0,0,1],
+            quarter=[1,4,2],
+            hour=[14,1,11],
+            minute=[3,13,0],
+            second=[25.,43.,0.],
+            isAM=[0,1,1]
+        )
+    end
 end
 
 
