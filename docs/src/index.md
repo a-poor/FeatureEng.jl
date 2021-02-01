@@ -7,5 +7,15 @@ _created by Austin Poor_
 
 A library for feature engineering in Julia.
 
-```@index
+## Installation
+
+```julia-repl
+julia> using Pkg
+julia> Pkg.add("FeatureEng")
+```
+
+## API Reference
+
+```@autodoc
+Modules = [FeatureEng]
 ```
