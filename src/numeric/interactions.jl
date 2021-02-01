@@ -1,7 +1,26 @@
 
 import DataFrames.DataFrame
 
-function polynomial(df::DataFrame, degree::T where T <: Integer = 2)
+
+"""
+    polynomial(df::DataFrame, degree::T = 2) where T <: Integer
+
+Calculate [polynomial](https://en.wikipedia.org/wiki/Polynomial_regression) interaction 
+terms between columns in a `DataFrame`.
+
+If you have a `DataFrame` with 3 columns: `x`, `y`, and `z`, you can get degree-2 
+polynomial interaction terms: `x*x`, `x*y`, `x*z`, `y*y`, `y*z`, and `z*z`.
+
+# Examples
+
+```@repl
+using DataFrames
+df = DataFrame(a=1:10,b=repeat(0:1,5))
+polynomial(df,2)
+polynomial(df,3)
+```
+"""
+function polynomial(df::DataFrame, degree::T = 2) where T <: Integer
     # Check inputs
     if degree < 1
         error("`degree` must be ≥ 1")
