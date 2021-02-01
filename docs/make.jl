@@ -6,7 +6,7 @@ makedocs(
     modules = [FeatureEng],
     sitename="FeatureEng.jl",
     authors="Austin Poor",
-    # clean=true,
+    clean=true,
     # debug=true,
     pages=[
         "index.md",

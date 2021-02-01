@@ -1,4 +1,4 @@
-# FeatureEng.jl
+# FeatureEng.jl Documentation
 
 ```@meta
 CurrentModule = FeatureEng
