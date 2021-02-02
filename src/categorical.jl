@@ -125,7 +125,7 @@ Deterministically encode categorical features with high cardinality as a
 
 ```julia-repl
 julia> data = [1:100;1000;];
-julia> encode_hash([1:1_000:10_000;])
+julia> encode_hash(data)
 10×8 DataFrame
  Row │ c1     c2     c3     c4     c5     c6     c7     c8    
      │ Int64  Int64  Int64  Int64  Int64  Int64  Int64  Int64 

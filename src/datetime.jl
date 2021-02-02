@@ -18,6 +18,7 @@ julia> date_strings = [
     "1999-10-05 01:13:43",
     "abcdefg"
     ];
+
 julia> strp_datetimes(date_strings)
 3-element Array{Union{Missing, DateTime},1}:
  2021-01-27T14:03:25
@@ -78,6 +79,7 @@ julia> data = strp_datetimes([
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
+
 julia> extract_datetime_features(data)
 3×10 DataFrame
  Row │ year   month    dayofmonth  dayofweek  isweekend  quarter  hour   minut ⋯
@@ -117,6 +119,7 @@ julia> data = strp_datetimes([
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
+
 julia> extract_time_features(data)
 3×4 DataFrame
  Row │ hour   minute  second   isAM  
@@ -159,6 +162,7 @@ julia> data = strp_datetimes([
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
+
 julia> extract_date_features(data)
 3×6 DataFrame
  Row │ year   month    dayofmonth  dayofweek  isweekend  quarter 
@@ -198,6 +202,7 @@ julia> data = strp_datetimes([
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
+
 julia> get_month(data)
 3-element CategoricalArrays.CategoricalArray{String,1,UInt32}:
  "January"
@@ -227,6 +232,7 @@ julia> data = strp_datetimes([
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
+
 julia> get_weekday(data)
 3-element CategoricalArrays.CategoricalArray{String,1,UInt32}:
  "Wednesday"
