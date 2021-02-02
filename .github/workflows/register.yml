@@ -1,7 +1,8 @@
 name: Register Package
 on:
-#   push:
-#     branches: [ main ]
+  push:
+    # branches: [ main ]
+    tags: ["*"]
 #   pull_request:
 #     branches: [ main ]
   workflow_dispatch:
