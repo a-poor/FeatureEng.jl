@@ -13,8 +13,11 @@ The basic version of this function makes a column for each unique
 value in `column`.
 
 ```@repl
+
 data = [3,1,2,4];
+
 encode_onehot(data)
+
 ```
 
 You can also specify a prefix for each column.
