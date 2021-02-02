@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Manual · FeatureEng.jl</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit">FeatureEng.jl</span></div><form class="docs-search" action="../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../">FeatureEng.jl</a></li><li class="is-active"><a class="tocitem" href>Manual</a><ul class="internal"><li><a class="tocitem" href="#Categorical-Features"><span>Categorical Features</span></a></li><li><a class="tocitem" href="#DateTime-Features"><span>DateTime Features</span></a></li><li><a class="tocitem" href="#Numeric-Features"><span>Numeric Features</span></a></li></ul></li><li><a class="tocitem" href="../examples/">Examples</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Manual</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Manual</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="github.com/a-poor/FeatureEng.jl.git" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Manual"><a class="docs-heading-anchor" href="#Manual">Manual</a><a id="Manual-1"></a><a class="docs-heading-anchor-permalink" href="#Manual" title="Permalink"></a></h1><ul><li><a href="../examples/#Examples">Examples</a></li><li><a href="../#FeatureEng.jl">FeatureEng.jl</a></li><ul><li><a href="../#Installation">Installation</a></li><li><a href="../#Where-to-Start">Where to Start</a></li><li><a href="../#Feedback">Feedback</a></li></ul><li><a href="#Manual">Manual</a></li><ul><li><a href="#Categorical-Features">Categorical Features</a></li><li><a href="#DateTime-Features">DateTime Features</a></li><li><a href="#Numeric-Features">Numeric Features</a></li></ul></ul><h2 id="Categorical-Features"><a class="docs-heading-anchor" href="#Categorical-Features">Categorical Features</a><a id="Categorical-Features-1"></a><a class="docs-heading-anchor-permalink" href="#Categorical-Features" title="Permalink"></a></h2><p>Functions for encoding a column of categorical data as multiple, binary columns.</p><article class="docstring"><header><a class="docstring-binding" id="FeatureEng.encode_dummy-Union{Tuple{T}, Tuple{T,T,String}} where T&lt;:AbstractArray" href="#FeatureEng.encode_dummy-Union{Tuple{T}, Tuple{T,T,String}} where T&lt;:AbstractArray"><code>FeatureEng.encode_dummy</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-julia">encode_dummy(column::T[, categories::T[, prefix::String]]) where T &lt;: AbstractArray</code></pre><p>Same as <a href="#FeatureEng.encode_onehot-Union{Tuple{T}, Tuple{T,T,String}} where T&lt;:AbstractArray"><code>encode_onehot</code></a> except that it drops the first column (to help prevent issues caused by <a href="https://en.wikipedia.org/wiki/Multicollinearity">multicollinearity</a>).</p><p>See also: <a href="#FeatureEng.encode_onehot-Union{Tuple{T}, Tuple{T,T,String}} where T&lt;:AbstractArray"><code>encode_onehot</code></a>, <a href="#FeatureEng.encode_hash-Union{Tuple{T}, Tuple{T,Int32}, Tuple{T,Int32,String}} where T&lt;:AbstractArray"><code>encode_hash</code></a></p></div><a class="docs-sourcelink" target="_blank" href="github.com/a-poor/FeatureEng.jl.git">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="FeatureEng.encode_hash-Union{Tuple{T}, Tuple{T,Int32}, Tuple{T,Int32,String}} where T&lt;:AbstractArray" href="#FeatureEng.encode_hash-Union{Tuple{T}, Tuple{T,Int32}, Tuple{T,Int32,String}} where T&lt;:AbstractArray"><code>FeatureEng.encode_hash</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-julia">encode_hash(column::T, n_cols::Int = 8, prefix::String = &quot;c&quot;) where T &lt;: AbstractArray</code></pre><p>Deterministically encode categorical features with high cardinality as a  <code>DataFrame</code> with <code>n_cols</code> columns. </p><pre><code class="language-julia-repl">julia&gt; data = [1:100;1000;];
-julia&gt; encode_hash([1:1_000:10_000;])
+julia&gt; encode_hash(data)
 10×8 DataFrame
  Row │ c1     c2     c3     c4     c5     c6     c7     c8    
      │ Int64  Int64  Int64  Int64  Int64  Int64  Int64  Int64 
@@ -46,6 +46,7 @@ julia&gt; encode_onehot(data,[1:6;],&quot;c&quot;)
     &quot;1999-10-05 01:13:43&quot;,
     &quot;2010-06-11 11:00:00&quot;
 ]);
+
 julia&gt; extract_date_features(data)
 3×6 DataFrame
  Row │ year   month    dayofmonth  dayofweek  isweekend  quarter 
@@ -61,6 +62,7 @@ julia&gt; extract_date_features(data)
     &quot;1999-10-05 01:13:43&quot;,
     &quot;2010-06-11 11:00:00&quot;
 ]);
+
 julia&gt; extract_datetime_features(data)
 3×10 DataFrame
  Row │ year   month    dayofmonth  dayofweek  isweekend  quarter  hour   minut ⋯
@@ -74,6 +76,7 @@ julia&gt; extract_datetime_features(data)
     &quot;1999-10-05 01:13:43&quot;,
     &quot;2010-06-11 11:00:00&quot;
 ]);
+
 julia&gt; extract_time_features(data)
 3×4 DataFrame
  Row │ hour   minute  second   isAM  
@@ -86,6 +89,7 @@ julia&gt; extract_time_features(data)
     &quot;1999-10-05 01:13:43&quot;,
     &quot;2010-06-11 11:00:00&quot;
 ]);
+
 julia&gt; get_month(data)
 3-element CategoricalArrays.CategoricalArray{String,1,UInt32}:
  &quot;January&quot;
@@ -95,6 +99,7 @@ julia&gt; get_month(data)
     &quot;1999-10-05 01:13:43&quot;,
     &quot;2010-06-11 11:00:00&quot;
 ]);
+
 julia&gt; get_weekday(data)
 3-element CategoricalArrays.CategoricalArray{String,1,UInt32}:
  &quot;Wednesday&quot;
@@ -104,6 +109,7 @@ julia&gt; get_weekday(data)
     &quot;1999-10-05 01:13:43&quot;,
     &quot;abcdefg&quot;
     ];
+
 julia&gt; strp_datetimes(date_strings)
 3-element Array{Union{Missing, DateTime},1}:
  2021-01-27T14:03:25
@@ -223,4 +229,4 @@ julia&gt; polynomial(df,3)
    7 │     7     49    343      0      0      0      0      0  0
    8 │     8     64    512     64      8      8      1      1  1
    9 │     9     81    729      0      0      0      0      0  0
-  10 │    10    100   1000    100     10     10      1      1  1</code></pre></div><a class="docs-sourcelink" target="_blank" href="github.com/a-poor/FeatureEng.jl.git">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« FeatureEng.jl</a><a class="docs-footer-nextpage" href="../examples/">Examples »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Tuesday 2 February 2021 17:14">Tuesday 2 February 2021</span>. Using Julia version 1.5.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+  10 │    10    100   1000    100     10     10      1      1  1</code></pre></div><a class="docs-sourcelink" target="_blank" href="github.com/a-poor/FeatureEng.jl.git">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« FeatureEng.jl</a><a class="docs-footer-nextpage" href="../examples/">Examples »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Tuesday 2 February 2021 20:31">Tuesday 2 February 2021</span>. Using Julia version 1.5.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
