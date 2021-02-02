@@ -26,7 +26,7 @@ deploydocs(
     devbranch = "main",
     # devurl = "",
     # versions = ["stable" => "v^", "v#.#", devurl => devurl],
-    versions = ["stable" => "v^", "v#.#", "latest" => "v#"],
+    versions = ["stable" => "v^", "v#.#", "latest" => "v^"],
     # push_preview    = true,
     # repo_previews   = repo,
     # branch_previews = branch,
