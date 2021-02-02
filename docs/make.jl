@@ -11,7 +11,6 @@ makedocs(
     pages=[
         "index.md",
         "Manual" => "manual.md",
-        "API Reference" => "api-reference.md",
     ],
     repo   = "github.com/a-poor/FeatureEng.jl.git",
 )
