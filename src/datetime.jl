@@ -12,13 +12,17 @@ Any of the strings it's unable to parse, will be replaced with `missing`.
 
 # Examples
 
-```@repl
-date_strings = [
+```julia-repl
+julia> date_strings = [
     "2021-01-27 14:03:25",
     "1999-10-05 01:13:43",
     "abcdefg"
     ];
-strp_datetimes(date_strings)
+julia> strp_datetimes(date_strings)
+3-element Array{Union{Missing, DateTime},1}:
+ 2021-01-27T14:03:25
+ 1999-10-05T01:13:43
+ missing
 ```
 """
 function strp_datetimes(datetimes::T, format::Union{String,DateFormat} = "y-m-d H:M:S") where T <: AbstractArray{<:AbstractString}
@@ -59,8 +63,8 @@ Features extracted:
 * `isAM`: Is time AM (vs PM)?
 
 The same as the following:
-```@repl
-hcat(
+```julia-repl
+julia>  hcat(
     extract_date_features(datetimes),
     extract_time_features(datetimes)
     )
@@ -68,13 +72,21 @@ hcat(
 
 # Examples
 
-```@repl
-data = strp_datetimes([
+```julia-repl
+julia> data = strp_datetimes([
     "2021-01-27 14:03:25",
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
-extract_datetime_features(data)
+julia> extract_datetime_features(data)
+3×10 DataFrame
+ Row │ year   month    dayofmonth  dayofweek  isweekend  quarter  hour   minut ⋯
+     │ Int64  Cat…     Int64       Cat…       Bool       Int64    Int64  Int64 ⋯
+─────┼──────────────────────────────────────────────────────────────────────────
+   1 │  2021  January          27  Wednesday      false        1     14        ⋯
+   2 │  1999  October           5  Tuesday        false        4      1      1
+   3 │  2010  June             11  Friday         false        2     11
+                                                               3 columns omitted
 ```
 
 See also: [`extract_date_features`](@ref), [`extract_time_features`](@ref)
@@ -99,13 +111,20 @@ Features extracted:
 
 # Examples
 
-```@repl
-data = strp_datetimes([
+```julia-repl
+julia> data = strp_datetimes([
     "2021-01-27 14:03:25",
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
-extract_time_features(data)
+julia> extract_time_features(data)
+3×4 DataFrame
+ Row │ hour   minute  second   isAM  
+     │ Int64  Int64   Float64  Bool  
+─────┼───────────────────────────────
+   1 │    14       3     25.0  false
+   2 │     1      13     43.0   true
+   3 │    11       0      0.0   true
 ```
 
 See also: [`extract_datetime_features`](@ref), [`extract_date_features`](@ref)
@@ -134,13 +153,20 @@ Features extracted:
 
 # Examples
 
-```@repl
-data = strp_datetimes([
+```julia-repl
+julia> data = strp_datetimes([
     "2021-01-27 14:03:25",
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
-extract_date_features(data)
+julia> extract_date_features(data)
+3×6 DataFrame
+ Row │ year   month    dayofmonth  dayofweek  isweekend  quarter 
+     │ Int64  Cat…     Int64       Cat…       Bool       Int64   
+─────┼───────────────────────────────────────────────────────────
+   1 │  2021  January          27  Wednesday      false        1
+   2 │  1999  October           5  Tuesday        false        4
+   3 │  2010  June             11  Friday         false        2
 ```
 
 See also: [`extract_datetime_features`](@ref), [`extract_time_features`](@ref)
@@ -166,13 +192,17 @@ Return an ordered `CategoricalArray` of month names extracted from `datetimes`.
 
 # Examples:
 
-```@repl
-data = strp_datetimes([
+```julia-repl
+julia> data = strp_datetimes([
     "2021-01-27 14:03:25",
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
-get_month(data)
+julia> get_month(data)
+3-element CategoricalArrays.CategoricalArray{String,1,UInt32}:
+ "January"
+ "October"
+ "June"
 ```
 
 See also: [`extract_datetime_features`](@ref), [`extract_date_features`](@ref), [`get_weekday`](@ref)
@@ -191,13 +221,17 @@ Return an ordered `CategoricalArray` of weekday names extracted from `datetimes`
 
 # Examples:
 
-```@repl
-data = strp_datetimes([
+```julia-repl
+julia> data = strp_datetimes([
     "2021-01-27 14:03:25",
     "1999-10-05 01:13:43",
     "2010-06-11 11:00:00"
 ]);
-get_weekday(data)
+julia> get_weekday(data)
+3-element CategoricalArrays.CategoricalArray{String,1,UInt32}:
+ "Wednesday"
+ "Tuesday"
+ "Friday"
 ```
 
 See also: [`extract_datetime_features`](@ref), [`extract_date_features`](@ref), [`get_weekday`](@ref)

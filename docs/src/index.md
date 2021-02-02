@@ -12,20 +12,22 @@ A library for feature engineering in Julia.
 
 ## Installation
 
-An example:
+You can in install `FeatureEng` with:
 
-```@example
-x = 1 + 2
-x
+```julia-repl
+julia> using Pkg
+julia> Pkg.add("FeatureEng")
 ```
 
-A REPL example:
+## Where to Start
 
-```@repl
-x = 1 + 2
-x
-```
+Check out the [manual](https://a-poor.github.io/FeatureEng.jl/latest/manual/) to find helpful functions based on the types of data you're working with (ex [categorical](https://a-poor.github.io/FeatureEng.jl/latest/manual/#Categorical-Features), [datetime](https://a-poor.github.io/FeatureEng.jl/latest/manual/#DateTime-Features), or [numeric](https://a-poor.github.io/FeatureEng.jl/latest/manual/#Numeric-Features) features).
 
-## Quick Start
+## Feedback
 
+Let me know what you think of `FeatureEng.jl`!
+
+I'd love to hear any suggestions for new features to add, helpful features you use in your ML process, or any feedback from using the library.
+
+Feel free to reach out to me on [twitter](https://twitter.com/austin_poor) or here on GitHub -- submit an issue or a PR!
 

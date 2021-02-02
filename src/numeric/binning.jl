@@ -4,6 +4,8 @@ import Parameters.@with_kw
 
 ##### BinFixedWidth #####
 
+"""
+"""
 @with_kw mutable struct BinFixedWidth
     n_bins::Integer = 10; @assert n_bins > 0
     data_min::Union{Float64,Missing} = missing
@@ -12,6 +14,8 @@ import Parameters.@with_kw
     is_fit::Bool = false
 end
 
+"""
+"""
 function fit_transform!(bin::BinFixedWidth, data::AbstractArray{<:Real})
     bin.data_min = minimum(data)
     bin.data_span = maximum(data) - bin.data_min
@@ -20,6 +24,8 @@ function fit_transform!(bin::BinFixedWidth, data::AbstractArray{<:Real})
     bin
 end
 
+"""
+"""
 function apply_transform(bin::BinFixedWidth, data::AbstractArray{<:Real})
     if !bin.is_fit | bin.data_min === missing | \
         bin.data_span === missing | bin.bin_width === missing
@@ -31,12 +37,16 @@ end
 
 ##### BinQuantile #####
 
+"""
+"""
 @with_kw mutable struct BinQuantile
     n_bins::Integer = 10; @assert n_bins > 0
     quantiles::Union{Array{Float64},Missing} = missing
     is_fit::Bool = false
 end
 
+"""
+"""
 function fit_transform!(bin::BinQuantile, data::AbstractArray{<:Real})
     bin.quantiles = Statistics.quantile(
         data,
@@ -46,6 +56,8 @@ function fit_transform!(bin::BinQuantile, data::AbstractArray{<:Real})
     bin
 end
 
+"""
+"""
 function apply_transform(bin::BinQuantile, data::AbstractArray{<:Real})
     if !bin.is_fit | bin.quantiles === missing
         error("`bin` hasn't been fit.")

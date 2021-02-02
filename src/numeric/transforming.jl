@@ -6,10 +6,27 @@ Log transform `data` using log-base, `base`.
 
 # Examples:
 
-```@repl
-data = [0:5;];
-transformLog(data)
-transformLog(data,2)
+```julia-repl
+julia> data = [0:5;];
+
+julia> transformLog(data)
+6-element Array{Float64,1}:
+ -Inf
+   0.0
+   0.6931471805599453
+   1.0986122886681098
+   1.3862943611198906
+   1.6094379124341003
+
+julia> transformLog(data,2)
+6-element Array{Float64,1}:
+ -Inf
+   0.0
+   1.0
+   1.5849625007211563
+   2.0
+   2.321928094887362
+
 ```
 
 See also: [`transformRoot`](@ref), [`transformBoxCox`](@ref)
@@ -25,10 +42,26 @@ Root transform `data` using root index, `index`.
 
 # Examples:
 
-```@repl
-data = [0:5;];
-transformRoot(data)
-transformRoot(data,2)
+```julia-repl
+julia> data = [0:5;];
+
+julia> transformRoot(data)
+6-element Array{Float64,1}:
+ 0.0
+ 1.0
+ 1.0717734625362931
+ 1.1161231740339044
+ 1.148698354997035
+ 1.174618943088019
+
+julia> transformRoot(data,2)
+6-element Array{Float64,1}:
+ 0.0
+ 1.0
+ 1.4142135623730951
+ 1.7320508075688772
+ 2.0
+ 2.23606797749979
 ```
 
 See also: [`transformLog`](@ref), [`transformBoxCox`](@ref)
@@ -52,11 +85,35 @@ y_i^{(\\lambda)} = \\left\\{\\begin{matrix}
 
 # Examples:
 
-```@repl
-data = [0:5;];
-transformBoxCox(data)
-transformBoxCox(data,.1)
-transformBoxCox(data,1)
+```julia-repl
+julia> data = [0:5;];
+
+julia> transformBoxCox(data)
+6-element Array{Float64,1}:
+ -Inf
+   0.0
+   0.6931471805599453
+   1.0986122886681098
+   1.3862943611198906
+   1.6094379124341003
+
+julia> transformBoxCox(data,.1)
+6-element Array{Float64,1}:
+ -10.0
+   0.0
+   0.7177346253629313
+   1.1612317403390437
+   1.486983549970351
+   1.7461894308801895
+
+julia> transformBoxCox(data,1)
+6-element Array{Float64,1}:
+ -1.0
+  0.0
+  1.0
+  2.0
+  3.0
+  4.0
 ```
 
 See also: [`transformLog`](@ref), [`transformRoot`](@ref)
