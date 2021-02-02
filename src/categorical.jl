@@ -13,32 +13,23 @@ The basic version of this function makes a column for each unique
 value in `column`.
 
 ```@repl
-
 data = [3,1,2,4];
-
 encode_onehot(data)
-
 ```
 
 You can also specify a prefix for each column.
 
 ```@repl
-
 data = [3,1,2,4];
-
 encode_onehot(data,prefix="col_")
-
 ```
 
 Additionally, you can specify the categories to convert to columns, 
 regardless of whether it exists in `column`.
 
 ```@repl
-
 data = [3,1,2,4];
-
 encode_onehot(data,[1:6;],"c")
-
 ```
 
 See also: [`encode_dummy`](@ref), [`encode_hash`](@ref)
@@ -109,11 +100,8 @@ Deterministically encode categorical features with high cardinality as a
 `DataFrame` with `n_cols` columns. 
 
 ```@repl
-
 data = [1:100;1000;];
-
 encode_hash([1:1_000:10_000;])
-
 ```
 
 See also: [`encode_onehot`](@ref), [`encode_dummy`](@ref)

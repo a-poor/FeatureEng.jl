@@ -12,9 +12,18 @@ A library for feature engineering in Julia.
 
 ## Installation
 
-```julia-repl
-julia> using Pkg
-julia> Pkg.add("FeatureEng")
+An example:
+
+```@example
+x = 1 + 2
+x
+```
+
+A REPL example:
+
+```@repl
+x = 1 + 2
+x
 ```
 
 ## Quick Start
