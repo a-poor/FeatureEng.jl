@@ -18,6 +18,10 @@ julia> using Pkg
 julia> Pkg.add("FeatureEng")
 ```
 
+## Other Pages
+
+* [](@ref)
+
 ## API Reference
 
 `@doc`
@@ -28,7 +32,7 @@ FeatureEng
 
 `@autodoc`
 
-```@autodoc
+```@autodocs
 Modules = [FeatureEng]
 ```
 

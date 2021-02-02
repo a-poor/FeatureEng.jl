@@ -1,5 +1,5 @@
 # API Reference
 
-```@autodoc
+```@autodocs
 Modules = [FeatureEng]
 ```
