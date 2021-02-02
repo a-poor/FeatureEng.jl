@@ -6,7 +6,7 @@ _created by Austin Poor_
 
 A library for feature engineering in Julia.
 
-Check out the documentation [here](https://a-poor.github.io/FeatureEng.jl/dev).
+Check out the documentation [here](https://a-poor.github.io/FeatureEng.jl/latest/).
 
 ## Installation
 
