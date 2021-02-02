@@ -1,5 +1,5 @@
 
-"""@doc
+"""
     transformLog(data::T, base::Real = ℯ) where T <: AbstractArray{<: Number}
 
 Log transform `data` using log-base, `base`.
@@ -18,7 +18,7 @@ function transformLog(data::T, base::Real = ℯ) where T <: AbstractArray{<: Num
     log.(base,data)
 end
 
-"""@doc
+"""
     transformRoot(data::T, index::Real = 10) where T <: AbstractArray{<: Number}
 
 Root transform `data` using root index, `index`.
@@ -37,7 +37,7 @@ function transformRoot(data::T, index::Real = 10) where T <: AbstractArray{<: Nu
     data .^ (1/index)
 end
 
-"""@doc
+"""
     transformBoxCox(data::T, λ::Real = 0.0) where T <: AbstractArray{<: Number}
 
 [Box-Cox power transformation](https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation)

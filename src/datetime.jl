@@ -3,7 +3,7 @@ using Dates
 using DataFrames
 using CategoricalArrays
 
-"""@doc
+"""
     strp_datetimes(datetimes::T, format::Union{String,DateFormat} = "y-m-d H:M:S") where T <: AbstractArray{<:AbstractString}
 
 Convert an array of timestamps and to an array of `DateTime` objects.
@@ -41,7 +41,7 @@ function strp_datetimes(datetimes::T, format::Union{String,DateFormat} = "y-m-d 
     )
 end
 
-"""@doc
+"""
     extract_datetime_features(datetimes::T) where T <: AbstractArray{<:DateTime}
 
 Extract a `DataFrame` of features from an array of `DateTime` objects.
@@ -64,6 +64,7 @@ hcat(
     extract_date_features(datetimes),
     extract_time_features(datetimes)
     )
+```
 
 # Examples
 
@@ -85,7 +86,7 @@ function extract_datetime_features(datetimes::T) where T <: AbstractArray{<:Date
     )
 end
 
-"""@doc
+"""
     extract_time_features(datetimes::T) where T <: AbstractArray{<:Union{Time,DateTime}}
 
 Extract a `DataFrame` of features from an array of `DateTime` or `Time` objects.
@@ -118,7 +119,7 @@ function extract_time_features(datetimes::T) where T <: AbstractArray{<:Union{Ti
     )
 end
 
-"""@doc
+"""
     extract_date_features(datetimes::T) where T <: AbstractArray{<:Union{Date,DateTime}}
 
 Extract a `DataFrame` of features from an array of `DateTime` or `Date` objects.
@@ -158,7 +159,7 @@ function extract_date_features(datetimes::T) where T <: AbstractArray{<:Union{Da
     )
 end
 
-"""@doc
+"""
     get_month(datetimes::T) where T <: AbstractArray{<:Union{Date,DateTime}}
 
 Return an ordered `CategoricalArray` of month names extracted from `datetimes`.
@@ -183,7 +184,7 @@ function get_month(datetimes::T) where T <: AbstractArray{<:Union{Date,DateTime}
     )
 end
 
-"""@doc
+"""
     get_weekday(datetimes::T) where T <: AbstractArray{<:Union{Date,DateTime}}
 
 Return an ordered `CategoricalArray` of weekday names extracted from `datetimes`.

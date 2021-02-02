@@ -1,7 +1,7 @@
 
 using DataFrames
 
-"""@doc
+"""
     encode_onehot(column::T[, categories::T[, prefix::String]]) where T <: AbstractArray
 
 Converts a categorical column into a `DataFrame` of one-hot-encoded columns --
@@ -53,7 +53,7 @@ function encode_onehot(column::T) where T <: AbstractArray
     encode_onehot(column,levels(column),"")
 end
 
-"""@doc
+"""
     encode_dummy(column::T[, categories::T[, prefix::String]]) where T <: AbstractArray
 
 Same as [`encode_onehot`](@ref) except that it drops the first column (to help prevent
@@ -93,7 +93,7 @@ function encode_dummy(column::T) where T <: AbstractArray
     end
 end
 
-"""@doc
+"""
     encode_hash(column::T, n_cols::Int = 8, prefix::String = "c") where T <: AbstractArray
 
 Deterministically encode categorical features with high cardinality as a 

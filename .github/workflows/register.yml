@@ -18,3 +18,4 @@ jobs:
         uses: julia-actions/RegisterAction@v0.2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ssh: ${{ secrets.DOCUMENTER_KEY }}
