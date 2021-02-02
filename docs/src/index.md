@@ -29,5 +29,5 @@ Let me know what you think of `FeatureEng.jl`!
 
 I'd love to hear any suggestions for new features to add, helpful features you use in your ML process, or any feedback from using the library.
 
-Feel free to reach out to me on [twitter](https://twitter.com/austin_poor) or here on GitHub -- submit an issue or a PR!
+Feel free to reach out to me on [twitter](https://twitter.com/austin_poor) or on [GitHub](https://github.com/a-poor/FeatureEng.jl) -- submit an issue or a PR!
 
