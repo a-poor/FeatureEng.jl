@@ -1,6 +1,10 @@
 # FeatureEng.jl
 
 ![build](https://github.com/a-poor/FeatureEng.jl/workflows/build/badge.svg)
+[![version](https://juliahub.com/docs/FeatureEng/version.svg)](https://juliahub.com/ui/Packages/FeatureEng/PcFbA)
+[![pkgeval](https://juliahub.com/docs/FeatureEng/pkgeval.svg)](https://juliahub.com/ui/Packages/FeatureEng/PcFbA)
+[![deps](https://juliahub.com/docs/FeatureEng/deps.svg)](https://juliahub.com/ui/Packages/FeatureEng/PcFbA?t=2)
+
 
 _created by Austin Poor_
 
