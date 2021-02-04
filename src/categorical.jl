@@ -1,6 +1,4 @@
 
-using DataFrames
-
 """
     encode_onehot(column::T[, categories::T[, prefix::String]]) where T <: AbstractArray
 

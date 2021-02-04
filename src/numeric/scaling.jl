@@ -1,9 +1,4 @@
 
-import Parameters.@with_kw
-import Statistics.mean
-import Statistics.std
-import Statistics.norm
-
 """
 """
 @with_kw mutable struct ScaleMinMax

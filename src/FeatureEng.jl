@@ -2,6 +2,16 @@
 """
 module FeatureEng
 
+using Dates
+using DataFrames
+using CategoricalArrays
+
+import Parameters.@with_kw
+import Statistics.mean
+import Statistics.std
+import Statistics.norm
+import Statistics.quantile
+
 include("numeric/binning.jl")
 include("numeric/transforming.jl")
 include("numeric/scaling.jl")

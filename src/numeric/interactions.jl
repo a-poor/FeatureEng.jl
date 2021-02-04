@@ -1,7 +1,4 @@
 
-import DataFrames.DataFrame
-
-
 """
     polynomial(df::DataFrame, degree::T = 2) where T <: Integer
 

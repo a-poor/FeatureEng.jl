@@ -1,7 +1,4 @@
 
-import Statistics
-import Parameters.@with_kw
-
 ##### BinFixedWidth #####
 
 """
@@ -48,7 +45,7 @@ end
 """
 """
 function fit_transform!(bin::BinQuantile, data::AbstractArray{<:Real})
-    bin.quantiles = Statistics.quantile(
+    bin.quantiles = quantile(
         data,
         0:( 1 / (n_bins-1) ):1
     )

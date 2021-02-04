@@ -1,8 +1,4 @@
 
-using Dates
-using DataFrames
-using CategoricalArrays
-
 """
     strp_datetimes(datetimes::T, format::Union{String,DateFormat} = "y-m-d H:M:S") where T <: AbstractArray{<:AbstractString}
 
