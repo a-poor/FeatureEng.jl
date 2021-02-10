@@ -9,7 +9,7 @@ end
 
 """
 """
-function fit_transform!(scale::ScaleMinMax, data::AbstractArray{<:Real})
+function fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
     scale.data_min = minimum(Float64,data)
     scale.data_max = maximum(Float64,data)
     scale.is_fit = true
@@ -18,7 +18,7 @@ end
 
 """
 """
-function apply_transform(scale::ScaleMinMax, data::AbstractArray{<:Real})
+function apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
     if !scale.is_fit
         error("`scale` hasn't been fit")
     end
@@ -36,7 +36,7 @@ end
 
 """
 """
-function fit_transform!(scale::ScaleVariance, data::AbstractArray{<:Real})
+function fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
     scale.data_mean = mean(data)
     scale.data_std = std(data)
     scale.is_fit = true
@@ -45,7 +45,7 @@ end
 
 """
 """
-function apply_transform(scale::ScaleVariance, data::AbstractArray{<:Real})
+function apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
     if !scale.is_fit
         error("`scale` hasn't been fit")
     end
@@ -61,7 +61,7 @@ end
 
 """
 """
-function fit_transform!(scale::ScaleL2, data::AbstractArray{<:Real})
+function fit_transform!(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
     scale.data_norm = norm(data)
     scale.is_fit = true
     scale
@@ -69,7 +69,7 @@ end
 
 """
 """
-function apply_transform(scale::ScaleL2, data::AbstractArray{<:Real})
+function apply_transform(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
     if !scale.is_fit
         error("`scale` hasn't been fit")
     end

@@ -13,7 +13,7 @@ end
 
 """
 """
-function fit_transform!(bin::BinFixedWidth, data::AbstractArray{<:Real})
+function fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
     bin.data_min = minimum(data)
     bin.data_span = maximum(data) - bin.data_min
     bin.bin_width = bin.data_span / bin.n_bins
@@ -23,7 +23,7 @@ end
 
 """
 """
-function apply_transform(bin::BinFixedWidth, data::AbstractArray{<:Real})
+function apply_transform(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
     if !bin.is_fit | bin.data_min === missing | \
         bin.data_span === missing | bin.bin_width === missing
         error("`bin` hasn't been fit.")
@@ -44,7 +44,7 @@ end
 
 """
 """
-function fit_transform!(bin::BinQuantile, data::AbstractArray{<:Real})
+function fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
     bin.quantiles = quantile(
         data,
         0:( 1 / (n_bins-1) ):1
@@ -55,7 +55,7 @@ end
 
 """
 """
-function apply_transform(bin::BinQuantile, data::AbstractArray{<:Real})
+function apply_transform(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
     if !bin.is_fit | bin.quantiles === missing
         error("`bin` hasn't been fit.")
     end
