@@ -4,7 +4,12 @@ abstract type AbstractBin end
 ##### BinFixedWidth #####
 
 """
-BinFixedWidth <: AbstractBin
+    BinFixedWidth <: AbstractBin
+
+Bin continuous data into `n_bins` discrete bins -- each with
+equal widths. Read more [here](https://en.wikipedia.org/wiki/Data_binning).
+
+See also: [`BinQuantile`](@ref)
 """
 @with_kw mutable struct BinFixedWidth <: AbstractBin
     n_bins::Integer = 10; @assert n_bins > 0
@@ -15,6 +20,11 @@ BinFixedWidth <: AbstractBin
 end
 
 """
+    fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
+
+Fit a `BinFixedWidth` object to `data`.
+
+See also: [`BinFixedWidth`](@ref)
 """
 function fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
     bin.data_min = minimum(data)
@@ -24,6 +34,11 @@ function fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:
 end
 
 """
+    apply_transform(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
+
+Bin `data` using a fit `BinFixedWidth` object.
+
+See also: [`BinFixedWidth`](@ref)
 """
 function apply_transform(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
     if (
@@ -42,7 +57,12 @@ end
 ##### BinQuantile #####
 
 """
-BinQuantile <: AbstractBin
+    BinQuantile <: AbstractBin
+
+Bin continuous data into `n_bins` discrete bins -- using the training
+data's quantiles. Read more [here](https://en.wikipedia.org/wiki/Data_binning).
+
+See also: [`BinFixedWidth`](@ref)
 """
 @with_kw mutable struct BinQuantile <: AbstractBin
     n_bins::Integer = 10; @assert n_bins > 0
@@ -51,6 +71,11 @@ BinQuantile <: AbstractBin
 end
 
 """
+    fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
+
+Fit a `BinQuantile` object to `data`.
+
+See also: [`BinQuantile`](@ref)
 """
 function fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
     bin.quantiles = quantile(
@@ -62,6 +87,11 @@ function fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Re
 end
 
 """
+    apply_transform(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
+
+Bin `data` using a fit `BinQuantile` object.
+
+See also: [`BinQuantile`](@ref)
 """
 function apply_transform(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
     if !bin.is_fit | (bin.quantiles === missing)

@@ -2,7 +2,12 @@
 abstract type AbstractScale end
 
 """
-ScaleMinMax <: AbstractScale
+    ScaleMinMax <: AbstractScale
+
+Scales the input data using minimum and maximum values. 
+Aka [rescaling](https://en.wikipedia.org/wiki/Feature_scaling#Rescaling_(min-max_normalization)).
+
+See also: [`ScaleVariance`](@ref), [`ScaleL2`](@ref)
 """
 @with_kw mutable struct ScaleMinMax <: AbstractScale
     data_min::Float64 = 0.0
@@ -11,6 +16,9 @@ ScaleMinMax <: AbstractScale
 end
 
 """
+    fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
+
+Fit a `ScaleMinMax` object to `data`.
 """
 function fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
     scale.data_min = minimum(Float64,data)
@@ -20,6 +28,9 @@ function fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:
 end
 
 """
+    apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
+
+Scale `data` using a fit `ScaleMinMax` object.
 """
 function apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
     if !scale.is_fit
@@ -30,7 +41,10 @@ function apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<
 end
 
 """
-ScaleVariance  <: AbstractScale
+    ScaleVariance  <: AbstractScale
+
+Scale the input data using 
+[standardization](https://en.wikipedia.org/wiki/Feature_scaling#Standardization_(Z-score_Normalization)).
 """
 @with_kw mutable struct ScaleVariance  <: AbstractScale
     data_mean::Float64 = 0.0
@@ -39,6 +53,9 @@ ScaleVariance  <: AbstractScale
 end
 
 """
+    fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
+
+Fit a `ScaleVariance` object to `data`.
 """
 function fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
     scale.data_mean = mean(data)
@@ -48,6 +65,9 @@ function fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{
 end
 
 """
+    apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
+
+Scale `data` using a fit `ScaleVariance` object.
 """
 function apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
     if !scale.is_fit
@@ -57,7 +77,10 @@ function apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray
 end
 
 """
-ScaleL2 <: AbstractScale
+    ScaleL2 <: AbstractScale
+
+Scales the input data using the data's norm. 
+Aka [scaling to unit length](https://en.wikipedia.org/wiki/Feature_scaling#Scaling_to_unit_length).
 """
 @with_kw mutable struct ScaleL2 <: AbstractScale
     data_norm::Float64 = 1.0
@@ -65,6 +88,9 @@ ScaleL2 <: AbstractScale
 end
 
 """
+    fit_transform!(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
+
+Fit a `ScaleL2` object to `data`.
 """
 function fit_transform!(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
     scale.data_norm = norm(data)
@@ -73,6 +99,9 @@ function fit_transform!(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real
 end
 
 """
+    apply_transform(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
+
+Scale `data` using a fit `ScaleL2` object.
 """
 function apply_transform(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
     if !scale.is_fit
