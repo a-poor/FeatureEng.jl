@@ -5,12 +5,10 @@ module FeatureEng
 using Dates
 using DataFrames
 using CategoricalArrays
+using Statistics
 
 import Parameters.@with_kw
-import Statistics.mean
-import Statistics.std
-import Statistics.norm
-import Statistics.quantile
+
 
 include("numeric/binning.jl")
 include("numeric/transforming.jl")
@@ -18,6 +16,7 @@ include("numeric/scaling.jl")
 include("numeric/interactions.jl")
 include("datetime.jl")
 include("categorical.jl")
+include("feature_selection.jl")
 
 
 export 
@@ -38,7 +37,10 @@ export
 
 # Datetime
     strp_datetimes, extract_datetime_features, extract_date_features, extract_time_features,
-    get_month, get_weekday
+    get_month, get_weekday,
+
+# Feature Selection
+    variance_threshold
 
 
 end # module
