@@ -1,7 +1,10 @@
 
+abstract type AbstractScale end
+
 """
+ScaleMinMax <: AbstractScale
 """
-@with_kw mutable struct ScaleMinMax
+@with_kw mutable struct ScaleMinMax <: AbstractScale
     data_min::Float64 = 0.0
     data_max::Float64 = 1.0
     is_fit::Bool = false
@@ -27,8 +30,9 @@ function apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<
 end
 
 """
+ScaleVariance  <: AbstractScale
 """
-@with_kw mutable struct ScaleVariance
+@with_kw mutable struct ScaleVariance  <: AbstractScale
     data_mean::Float64 = 0.0
     data_std::Float64 = 1.0
     is_fit::Bool = false
@@ -53,8 +57,9 @@ function apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray
 end
 
 """
+ScaleL2 <: AbstractScale
 """
-@with_kw mutable struct ScaleL2
+@with_kw mutable struct ScaleL2 <: AbstractScale
     data_norm::Float64 = 1.0
     is_fit::Bool = false
 end
