@@ -40,7 +40,12 @@ Fit an `ImputeMedian` object to `data`.
 See also: [`ImputeMedian`](@ref)
 """
 function fit_transform!(imp::ImputeMedian, data::T) where T <: AbstractArray{<:Union{Missing,<:Number}}
-    imp.data_median = median(skipmissing(data))
+    med = median(skipmissing(data))
+    if nonmissingtype(eltype(data)) <: Integer
+        imp.data_median = round(Int,med)
+    else
+        imp.data_median = med
+    end
     imp.is_fit = true
     imp
 end
@@ -81,7 +86,12 @@ Fit an `ImputeMean` object to `data`.
 See also: [`ImputeMean`](@ref)
 """
 function fit_transform!(imp::ImputeMean, data::T) where T <: AbstractArray{<:Union{Missing,<:Number}}
-    imp.data_mean = mean(skipmissing(data))
+    avg = mean(skipmissing(data))
+    if nonmissingtype(eltype(data)) <: Integer
+        imp.data_mean = round(Int,avg)
+    else
+        imp.data_mean = avg
+    end
     imp.is_fit = true
     imp
 end
