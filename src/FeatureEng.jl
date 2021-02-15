@@ -1,5 +1,3 @@
-"""
-"""
 module FeatureEng
 
 using Dates
@@ -17,6 +15,7 @@ include("numeric/interactions.jl")
 include("datetime.jl")
 include("categorical.jl")
 include("feature_selection.jl")
+include("impute.jl")
 
 
 export 
@@ -36,11 +35,14 @@ export
     encode_onehot, encode_dummy, encode_hash,
 
 # Datetime
-    strp_datetimes, extract_datetime_features, extract_date_features, extract_time_features,
-    get_month, get_weekday,
+    strp_datetimes, extract_datetime_features, extract_date_features, 
+    extract_time_features, get_month, get_weekday,
 
 # Feature Selection
-    variance_threshold
+    variance_threshold,
+
+# Impute
+    ImputeMedian, ImputeMean
 
 
 end # module

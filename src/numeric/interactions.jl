@@ -62,7 +62,7 @@ julia> polynomial(df,3)
   10 │    10    100   1000    100     10     10      1      1  1
 ```
 """
-function polynomial(df::DataFrame, degree::T = 2) where T <: Integer
+function polynomial(df::DataFrame, degree::Int = 2)
     # Check inputs
     if degree < 1
         error("`degree` must be ≥ 1")

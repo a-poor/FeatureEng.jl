@@ -20,13 +20,13 @@ See also: [`BinQuantile`](@ref)
 end
 
 """
-    fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
+    fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Number}
 
 Fit a `BinFixedWidth` object to `data`.
 
 See also: [`BinFixedWidth`](@ref)
 """
-function fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
+function fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Number}
     bin.data_min = minimum(data)
     bin.data_span = maximum(data) - bin.data_min
     bin.is_fit = true
@@ -34,13 +34,13 @@ function fit_transform!(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:
 end
 
 """
-    apply_transform(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
+    apply_transform(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Number}
 
 Bin `data` using a fit `BinFixedWidth` object.
 
 See also: [`BinFixedWidth`](@ref)
 """
-function apply_transform(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Real}
+function apply_transform(bin::BinFixedWidth, data::T) where T <: AbstractArray{<:Number}
     if (
         !bin.is_fit | 
         (bin.data_min === missing) |
@@ -71,13 +71,13 @@ See also: [`BinFixedWidth`](@ref)
 end
 
 """
-    fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
+    fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Number}
 
 Fit a `BinQuantile` object to `data`.
 
 See also: [`BinQuantile`](@ref)
 """
-function fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
+function fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Number}
     bin.quantiles = quantile(
         data,
         0:( 1 / (n_bins-1) ):1
@@ -87,13 +87,13 @@ function fit_transform!(bin::BinQuantile, data::T) where T <: AbstractArray{<:Re
 end
 
 """
-    apply_transform(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
+    apply_transform(bin::BinQuantile, data::T) where T <: AbstractArray{<:Number}
 
 Bin `data` using a fit `BinQuantile` object.
 
 See also: [`BinQuantile`](@ref)
 """
-function apply_transform(bin::BinQuantile, data::T) where T <: AbstractArray{<:Real}
+function apply_transform(bin::BinQuantile, data::T) where T <: AbstractArray{<:Number}
     if !bin.is_fit | (bin.quantiles === missing)
         error("`bin` hasn't been fit.")
     end

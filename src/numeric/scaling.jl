@@ -16,11 +16,11 @@ See also: [`ScaleVariance`](@ref), [`ScaleL2`](@ref)
 end
 
 """
-    fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
+    fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Number}
 
 Fit a `ScaleMinMax` object to `data`.
 """
-function fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
+function fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Number}
     scale.data_min = minimum(Float64,data)
     scale.data_max = maximum(Float64,data)
     scale.is_fit = true
@@ -28,11 +28,11 @@ function fit_transform!(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:
 end
 
 """
-    apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
+    apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Number}
 
 Scale `data` using a fit `ScaleMinMax` object.
 """
-function apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Real}
+function apply_transform(scale::ScaleMinMax, data::T) where T <: AbstractArray{<:Number}
     if !scale.is_fit
         error("`scale` hasn't been fit")
     end
@@ -53,11 +53,11 @@ Scale the input data using
 end
 
 """
-    fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
+    fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Number}
 
 Fit a `ScaleVariance` object to `data`.
 """
-function fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
+function fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Number}
     scale.data_mean = mean(data)
     scale.data_std = std(data)
     scale.is_fit = true
@@ -65,11 +65,11 @@ function fit_transform!(scale::ScaleVariance, data::T) where T <: AbstractArray{
 end
 
 """
-    apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
+    apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Number}
 
 Scale `data` using a fit `ScaleVariance` object.
 """
-function apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Real}
+function apply_transform(scale::ScaleVariance, data::T) where T <: AbstractArray{<:Number}
     if !scale.is_fit
         error("`scale` hasn't been fit")
     end
@@ -88,22 +88,22 @@ Aka [scaling to unit length](https://en.wikipedia.org/wiki/Feature_scaling#Scali
 end
 
 """
-    fit_transform!(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
+    fit_transform!(scale::ScaleL2, data::T) where T <: AbstractArray{<:Number}
 
 Fit a `ScaleL2` object to `data`.
 """
-function fit_transform!(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
+function fit_transform!(scale::ScaleL2, data::T) where T <: AbstractArray{<:Number}
     scale.data_norm = norm(data)
     scale.is_fit = true
     scale
 end
 
 """
-    apply_transform(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
+    apply_transform(scale::ScaleL2, data::T) where T <: AbstractArray{<:Number}
 
 Scale `data` using a fit `ScaleL2` object.
 """
-function apply_transform(scale::ScaleL2, data::T) where T <: AbstractArray{<:Real}
+function apply_transform(scale::ScaleL2, data::T) where T <: AbstractArray{<:Number}
     if !scale.is_fit
         error("`scale` hasn't been fit")
     end
